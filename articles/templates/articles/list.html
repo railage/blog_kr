@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <h2 style="margin: 0; color: #343a40;">Все статьи</h2>
+    <a href="create/" class="btn btn-success">+Создать статью</a>
+</div>
+
+{% if articles %}
+    {% for article in articles %}
+    <div class="article-card">
+        <h3 style="margin-top: 0; color: #2575fc;">{{ article.title }}</h3>
+        <p style="color: #495057; line-height: 1.6;">{{ article.content|truncatechars:200 }}</p>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+            <span style="color: #6c757d; font-size: 0.9em;">
+                Создано: {{ article.created_at|date:"d.m.Y H:i" }}
+            </span>
+            <div>
+                <a href="{{ article.id }}/edit/" class="btn btn-edit">Редактировать</a>
+                <a href="{{ article.id }}/delete/" class="btn btn-danger"
+                   onclick="return confirm('Удалить статью «{{ article.title }}»?')">
+                    Удалить
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <div class="empty-state">
+        <h3>Статей пока нет</h3>
+        <p>Создайте первую статью, нажав на кнопку выше!</p>
+        <a href="create/" class="btn btn-primary" style="margin-top: 20px;">Создать первую статью</a>
+    </div>
+{% endif %}
+{% endblock %}

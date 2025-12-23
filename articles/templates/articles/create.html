@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="max-width: 800px; margin: 0 auto;">
+    <div class="form-container">
+        <h2 style="color: #28a745; margin-top: 0;">Создать новую статью</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <label style="font-weight: bold; color: #495057;">Заголовок статьи:</label>
+            <input type="text" name="title" placeholder="Введите заголовок..." required>
+
+            <label style="font-weight: bold; color: #495057;">Текст статьи:</label>
+            <textarea name="content" placeholder="Напишите текст статьи здесь..." required></textarea>
+
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button type="submit" class="btn btn-success" style="flex: 1;">
+                    Опубликовать статью
+                </button>
+                <a href="../" class="btn" style="flex: 1; background: #6c757d; color: white; text-align: center;">
+                    Отмена
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
