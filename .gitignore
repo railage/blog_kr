@@ -1,0 +1,23 @@
+# БД SQLite
+*.sqlite3
+*.db
+*.sqlite
+
+# Django
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+venv/
+.env
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
